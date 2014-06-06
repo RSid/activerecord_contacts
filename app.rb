@@ -17,8 +17,7 @@ get '/' do
   @query = params[:query]
 
   if @query
-    #@results = Contact.where("contact.name = #{@query}")
-    #binding.pry
+    @results = Contact.where('first_name = ? OR last_name = ?',@query,@query)
   end
 
   @contacts = Contact.limit(3).offset(3 * @page)
