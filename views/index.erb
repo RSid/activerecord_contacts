@@ -1,5 +1,24 @@
 <h1>Contacts</h1>
 
+<p><a href="/add">Add contacts here</a></p>
+
+<form>
+  <label for="query">Search: </label>
+  <input type="text" name="query" id="query" />
+
+  <input type="submit" value="Search" />
+</form>
+
+<p>Results:
+  <% if @results %>
+    <% @results.each do |result| %>
+      <%= result.name %>
+    <% end %>
+  <% end %>
+
+</p>
+<br>
+
 <ul>
   <% @contacts.each do |contact| %>
     <li><a href= <%= "/contacts/#{contact.id}" %> ><%= contact.name %> - <%= contact.phone_number %></a></li>
