@@ -13,7 +13,10 @@ require_relative 'models/contact'
 
 
 get '/' do
-  @contacts = Contact.all
+  @page = params[:page].to_i
+
+  @contacts = Contact.limit(3).offset(3 * @page)
+
   erb :index
 end
 
